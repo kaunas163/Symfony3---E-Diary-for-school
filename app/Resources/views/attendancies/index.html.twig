@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Attendancies list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Mark</th>
+                <th>Note</th>
+                <th>Attended</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for attendancy in attendancies %}
+            <tr>
+                <td><a href="{{ path('attendancies_show', { 'id': attendancy.id }) }}">{{ attendancy.mark }}</a></td>
+                <td>{{ attendancy.note }}</td>
+                <td>{% if attendancy.attended %}Yes{% else %}No{% endif %}</td>
+                <td>{{ attendancy.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('attendancies_show', { 'id': attendancy.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('attendancies_edit', { 'id': attendancy.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('attendancies_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

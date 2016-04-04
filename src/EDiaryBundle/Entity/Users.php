@@ -3,6 +3,7 @@
 namespace EDiaryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use EDiaryBundle\Entity\Roles;
 
 /**
  * Users
@@ -161,5 +162,9 @@ class Users
     public function getRole()
     {
         return $this->role;
+    }
+    
+    public function __toString() {
+        return $this->username;
     }
 }

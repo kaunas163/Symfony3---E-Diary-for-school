@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Roles</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Title</th>
+                <td>{{ role.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ role.description }}</td>
+            </tr>
+            <tr>
+                <th>Pages</th>
+                <td>{{ role.pages }}</td>
+            </tr>
+            <tr>
+                <th>Courses</th>
+                <td>{{ role.courses }}</td>
+            </tr>
+            <tr>
+                <th>Lessons</th>
+                <td>{{ role.lessons }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ role.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('roles_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('roles_edit', { 'id': role.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

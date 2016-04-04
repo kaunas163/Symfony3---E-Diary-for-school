@@ -29,21 +29,21 @@ class Roles
     /**
      * @var string
      *
-     * @ORM\Column(name="pages", type="string", length=255, nullable=false)
+     * @ORM\Column(name="pages", type="string", nullable=false)
      */
     private $pages;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="courses", type="string", length=255, nullable=false)
+     * @ORM\Column(name="courses", type="string", nullable=false)
      */
     private $courses;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lessons", type="string", length=255, nullable=false)
+     * @ORM\Column(name="lessons", type="string", nullable=false)
      */
     private $lessons;
 

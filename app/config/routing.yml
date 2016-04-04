@@ -1,3 +1,27 @@
+e_diary_attendancies:
+    resource: "@EDiaryBundle/Controller/AttendanciesController.php"
+    type:     annotation
+
+e_diary_lessons:
+    resource: "@EDiaryBundle/Controller/LessonsController.php"
+    type:     annotation
+
+e_diary_courses:
+    resource: "@EDiaryBundle/Controller/CoursesController.php"
+    type:     annotation
+
+e_diary_pages:
+    resource: "@EDiaryBundle/Controller/PagesController.php"
+    type:     annotation
+
+e_diary_roles:
+    resource: "@EDiaryBundle/Controller/RolesController.php"
+    type:     annotation
+
+e_diary_users:
+    resource: "@EDiaryBundle/Controller/UsersController.php"
+    type:     annotation
+
 e_diary:
     resource: "@EDiaryBundle/Resources/config/routing.yml"
     prefix:   /

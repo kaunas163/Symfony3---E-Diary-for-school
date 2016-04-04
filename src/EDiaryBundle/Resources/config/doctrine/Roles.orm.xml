@@ -14,17 +14,17 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="pages" type="string" column="pages" length="255" nullable="false">
+    <field name="pages" type="string" column="pages" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="courses" type="string" column="courses" length="255" nullable="false">
+    <field name="courses" type="string" column="courses" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="lessons" type="string" column="lessons" length="255" nullable="false">
+    <field name="lessons" type="string" column="lessons" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
