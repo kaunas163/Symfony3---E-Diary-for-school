@@ -1,0 +1,60 @@
+<?php
+
+namespace EDiaryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Lessons
+ *
+ * @ORM\Table(name="lessons", indexes={@ORM\Index(name="teacher_id", columns={"teacher_id"}), @ORM\Index(name="course_id", columns={"course_id"})})
+ * @ORM\Entity
+ */
+class Lessons
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datetime", type="datetime", nullable=false)
+     */
+    private $datetime;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="string", length=255, nullable=true)
+     */
+    private $comment;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \EDiaryBundle\Entity\Courses
+     *
+     * @ORM\ManyToOne(targetEntity="EDiaryBundle\Entity\Courses")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="course_id", referencedColumnName="id")
+     * })
+     */
+    private $course;
+
+    /**
+     * @var \EDiaryBundle\Entity\Users
+     *
+     * @ORM\ManyToOne(targetEntity="EDiaryBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="teacher_id", referencedColumnName="id")
+     * })
+     */
+    private $teacher;
+
+
+}
+

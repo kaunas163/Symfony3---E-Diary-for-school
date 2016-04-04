@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EDiaryBundle\Entity\Attendancies" table="attendancies">
+    <indexes>
+      <index name="lesson_id" columns="lesson_id"/>
+      <index name="student_id" columns="student_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="mark" type="integer" column="mark" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="note" type="string" column="note" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="attended" type="boolean" column="attended" nullable="false"/>
+    <many-to-one field="student" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="student_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="lesson" target-entity="Lessons" fetch="LAZY">
+      <join-columns>
+        <join-column name="lesson_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

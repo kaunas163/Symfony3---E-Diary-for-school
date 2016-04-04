@@ -1,0 +1,3 @@
+e_diary_homepage:
+    path:     /ediary
+    defaults: { _controller: EDiaryBundle:Default:index }
