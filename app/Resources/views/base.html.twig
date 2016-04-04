@@ -3,11 +3,61 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/ediary/css/bootstrap.min.css') }}">
+            <style>
+                body {
+                    background-color: #f8f8f8;
+                }
+                .container {
+                    background-color: white;
+                }
+                footer {
+                    text-align: right;
+                    margin: 20px;
+                }
+            </style>
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Perjungti navigaciją</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Elektroninis dienynas</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Vartotojai</a></li>
+                        <li><a href="#">Rolės</a></li>
+                        <li><a href="#">Puslapiai</a></li>
+                        <li><a href="#">Kursai</a></li>
+                        <li><a href="#">Klasės</a></li>
+                        <li><a href="#">Pamokos</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Prisijungti</a></li>
+                        <li><a href="#">Registruotis</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container">
+            {% block body %}{% endblock %}
+            <footer>
+                2016 &copy; Ieva Jakšaitytė.
+            </footer>
+        </div>
+        
         {% block javascripts %}{% endblock %}
     </body>
 </html>
