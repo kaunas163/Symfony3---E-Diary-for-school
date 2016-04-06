@@ -1,5 +1,5 @@
-Univerity task
-==============
+University task
+===============
 
 This is university task with PHP and MySQL which I have chosen to do with Symfony 3 framework.
 
