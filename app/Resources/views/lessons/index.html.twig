@@ -8,7 +8,6 @@
             <tr>
                 <th>Datetime</th>
                 <th>Comment</th>
-                <th>Id</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,7 +16,6 @@
             <tr>
                 <td><a href="{{ path('lessons_show', { 'id': lesson.id }) }}">{{ lesson.datetime }}</a></td>
                 <td>{{ lesson.comment }}</td>
-                <td>{{ lesson.id }}</td>
                 <td>
                     <ul>
                         <li>

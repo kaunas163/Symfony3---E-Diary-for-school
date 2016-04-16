@@ -9,7 +9,6 @@
                 <th>Mark</th>
                 <th>Note</th>
                 <th>Attended</th>
-                <th>Id</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -19,7 +18,6 @@
                 <td><a href="{{ path('attendancies_show', { 'id': attendancy.id }) }}">{{ attendancy.mark }}</a></td>
                 <td>{{ attendancy.note }}</td>
                 <td>{% if attendancy.attended %}Yes{% else %}No{% endif %}</td>
-                <td>{{ attendancy.id }}</td>
                 <td>
                     <ul>
                         <li>
