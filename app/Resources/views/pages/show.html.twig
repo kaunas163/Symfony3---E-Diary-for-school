@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Pages</h1>
+    <h1>Puslapis</h1>
 
     <table class="table table-striped table-hover">
         <tbody>
             <tr>
-                <th>Title</th>
+                <th>Pavadinimas</th>
                 <td>{{ page.title }}</td>
             </tr>
             <tr>
-                <th>Text</th>
+                <th>Tekstas</th>
                 <td>{{ page.text }}</td>
             </tr>
         </tbody>
@@ -18,14 +18,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('pages_index') }}">Back to the list</a>
+            <a href="{{ path('pages_index') }}">Grįžti į sąrašą</a>
         </li>
         <li>
-            <a href="{{ path('pages_edit', { 'id': page.id }) }}">Edit</a>
+            <a href="{{ path('pages_edit', { 'id': page.id }) }}">Redaguoti</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Ištrinti">
             {{ form_end(delete_form) }}
         </li>
     </ul>

@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Lessons</h1>
+    <h1>Klasė</h1>
 
     <table class="table table-striped table-hover">
         <tbody>
             <tr>
-                <th>Datetime</th>
+                <th>Data ir laikas</th>
                 <td>{% if lesson.datetime %}{{ lesson.datetime|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Comment</th>
+                <th>Komentaras</th>
                 <td>{{ lesson.comment }}</td>
             </tr>
         </tbody>
@@ -18,14 +18,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('lessons_index') }}">Back to the list</a>
+            <a href="{{ path('lessons_index') }}">Grįžti į sąrašą</a>
         </li>
         <li>
-            <a href="{{ path('lessons_edit', { 'id': lesson.id }) }}">Edit</a>
+            <a href="{{ path('lessons_edit', { 'id': lesson.id }) }}">Redaguoti</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Ištrinti">
             {{ form_end(delete_form) }}
         </li>
     </ul>
