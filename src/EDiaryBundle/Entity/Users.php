@@ -3,39 +3,16 @@
 namespace EDiaryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use EDiaryBundle\Entity\Roles;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * Users
  *
- * @ORM\Table(name="users", indexes={@ORM\Index(name="role_id", columns={"role_id"}), @ORM\Index(name="username", columns={"username"}), @ORM\Index(name="child_username", columns={"child_username"})})
+ * @ORM\Table(name="users", indexes={@ORM\Index(name="username", columns={"username"}), @ORM\Index(name="child_username", columns={"child_username"})})
  * @ORM\Entity
  */
-class Users
+class Users extends BaseUser
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=255, nullable=false)
-     */
-    private $username;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255, nullable=false)
-     */
-    private $password;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
     /**
      * @var \EDiaryBundle\Entity\Users
      *
@@ -46,17 +23,10 @@ class Users
      */
     private $childUsername;
 
-    /**
-     * @var \EDiaryBundle\Entity\Roles
-     *
-     * @ORM\ManyToOne(targetEntity="EDiaryBundle\Entity\Roles")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="role_id", referencedColumnName="id")
-     * })
-     */
-    private $role;
-
-
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Set username
@@ -140,31 +110,7 @@ class Users
         return $this->childUsername;
     }
 
-    /**
-     * Set role
-     *
-     * @param \EDiaryBundle\Entity\Roles $role
-     *
-     * @return Users
-     */
-    public function setRole(\EDiaryBundle\Entity\Roles $role = null)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return \EDiaryBundle\Entity\Roles
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
-    
-    public function __toString() {
-        return $this->username;
-    }
+//    public function __toString() {
+//        return $this->username;
+//    }
 }
