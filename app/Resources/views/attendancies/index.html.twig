@@ -6,7 +6,7 @@
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>Mark</th>
+                <th>Pažymys</th>
                 <th>Note</th>
                 <th>Attended</th>
                 <th>Actions</th>
@@ -23,9 +23,11 @@
                         <li>
                             <a href="{{ path('attendancies_show', { 'id': attendancy.id }) }}">show</a>
                         </li>
-                        <li>
-                            <a href="{{ path('attendancies_edit', { 'id': attendancy.id }) }}">edit</a>
-                        </li>
+                        {% if is_granted('ROLE_TEACHER') %}
+                            <li>
+                                <a href="{{ path('attendancies_edit', { 'id': attendancy.id }) }}">edit</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </td>
             </tr>
@@ -33,9 +35,11 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('attendancies_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    {% if is_granted('ROLE_TEACHER') %}
+        <ul>
+            <li>
+                <a href="{{ path('attendancies_new') }}">Create a new entry</a>
+            </li>
+        </ul>
+    {% endif %}
 {% endblock %}

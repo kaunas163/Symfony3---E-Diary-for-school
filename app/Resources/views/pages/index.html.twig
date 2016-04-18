@@ -8,7 +8,9 @@
             <tr>
                 <th>Pavadinimas</th>
                 <th>Tekstas</th>
-                <th>Veiksmai</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>Veiksmai</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -16,24 +18,30 @@
             <tr>
                 <td><a href="{{ path('pages_show', { 'id': page.id }) }}">{{ page.title }}</a></td>
                 <td>{{ page.text }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('pages_show', { 'id': page.id }) }}">Rodyti</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('pages_edit', { 'id': page.id }) }}">Redaguoti</a>
-                        </li>
-                    </ul>
-                </td>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('pages_show', { 'id': page.id }) }}">Rodyti</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('pages_edit', { 'id': page.id }) }}">Redaguoti</a>
+                            </li>
+
+                        </ul>
+                    </td>
+                {% endif %}
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('pages_new') }}">Naujas</a>
-        </li>
-    </ul>
+    {% if is_granted('ROLE_ADMIN') %}
+        <ul>
+            <li>
+                <a href="{{ path('pages_new') }}">Naujas</a>
+            </li>
+        </ul>
+    {% endif %}
 {% endblock %}

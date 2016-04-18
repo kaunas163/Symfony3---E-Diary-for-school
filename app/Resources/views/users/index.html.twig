@@ -17,7 +17,7 @@
             <tr>
                 <td><a href="{{ path('users_show', { 'id': user.id }) }}">{{ user.username }}</a></td>
                 <td>{{ user.childUsername }}</td>
-                <td>{{ user.role }}</td>
+                <td>{{ user.roles[0] }}</td>
                 <td>
                     <ul>
                         <li>
