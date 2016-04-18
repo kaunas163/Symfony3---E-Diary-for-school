@@ -6,7 +6,8 @@
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>Vartotojo vardas</th>
+                <th>Vartotojas</th>
+                <th>El. pašto adresas</th>
                 <th>Vaikas</th>
                 <th>Rolė</th>
                 <th>Veiksmai</th>
@@ -16,7 +17,8 @@
         {% for user in users %}
             <tr>
                 <td><a href="{{ path('users_show', { 'id': user.id }) }}">{{ user.username }}</a></td>
-                <td>{{ user.childUsername }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.child }}</td>
                 <td>{{ user.roles[0] }}</td>
                 <td>
                     <ul>

@@ -8,14 +8,16 @@
             <tr>
                 <th>Data ir laikas</th>
                 <th>Komentaras</th>
+                <th>Mokytojas</th>
                 <th>Veiksmai</th>
             </tr>
         </thead>
         <tbody>
         {% for lesson in lessons %}
             <tr>
-                <td><a href="{{ path('lessons_show', { 'id': lesson.id }) }}">{{ lesson.datetime }}</a></td>
+                <td><a href="{{ path('lessons_show', { 'id': lesson.id }) }}">{{ lesson.datetime|date('Y-m-d | H:i') }}</a></td>
                 <td>{{ lesson.comment }}</td>
+                <td>{{ lesson.teacher }}</td>
                 <td>
                     <ul>
                         <li>

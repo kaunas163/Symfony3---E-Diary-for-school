@@ -20,11 +20,12 @@ class CoursesType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Pavadinimas',
                 'attr' => [
-                    'class' => 'form-control'
-                ]
+                    'class' => 'form-control',
+                ],
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Aprašymas',
+                'required' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]

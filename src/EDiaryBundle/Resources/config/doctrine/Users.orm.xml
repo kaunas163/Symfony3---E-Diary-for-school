@@ -3,14 +3,14 @@
   <entity name="EDiaryBundle\Entity\Users" table="users">
     <indexes>
       <index name="username" columns="username"/>
-      <index name="child_username" columns="child_username"/>
+      <index name="child" columns="child"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <many-to-one field="childUsername" target-entity="Users" fetch="LAZY">
+    <many-to-one field="child" target-entity="Users" fetch="LAZY">
       <join-columns>
-        <join-column name="child_username" referenced-column-name="username"/>
+        <join-column name="child" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

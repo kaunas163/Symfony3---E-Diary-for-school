@@ -18,10 +18,10 @@ class Users extends BaseUser
      *
      * @ORM\ManyToOne(targetEntity="EDiaryBundle\Entity\Users")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="child_username", referencedColumnName="username")
+     *   @ORM\JoinColumn(name="child", referencedColumnName="id")
      * })
      */
-    private $childUsername;
+    private $child;
 
     public function __construct()
     {
@@ -88,27 +88,27 @@ class Users extends BaseUser
     }
 
     /**
-     * Set childUsername
+     * Set child
      *
-     * @param \EDiaryBundle\Entity\Users $childUsername
+     * @param \EDiaryBundle\Entity\Users $child
      *
      * @return Users
      */
-    public function setChildUsername(\EDiaryBundle\Entity\Users $childUsername = null)
+    public function setChild(\EDiaryBundle\Entity\Users $child = null)
     {
-        $this->childUsername = $childUsername;
+        $this->child = $child;
 
         return $this;
     }
 
     /**
-     * Get childUsername
+     * Get child
      *
      * @return \EDiaryBundle\Entity\Users
      */
-    public function getChildUsername()
+    public function getChild()
     {
-        return $this->childUsername;
+        return $this->child;
     }
 
 //    public function __toString() {

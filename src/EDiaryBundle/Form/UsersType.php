@@ -30,18 +30,18 @@ class UsersType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-            // ->add('childUsername', EntityType::class, [
-            //     'class' => 'EDiaryBundle:Users',
-            //     'choice_label' => 'username'
-            // ])
-            ->add('role', EntityType::class, [
-                'class' => 'EDiaryBundle:Roles',
-                'choice_label' => 'title',
-                'label' => 'Rolė',
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
+             ->add('child', EntityType::class, [
+                 'class' => 'EDiaryBundle:Users',
+                 'choice_label' => 'username'
+             ])
+//            ->add('role', EntityType::class, [
+//                'class' => 'EDiaryBundle:Roles',
+//                'choice_label' => 'title',
+//                'label' => 'Rolė',
+//                'attr' => [
+//                    'class' => 'form-control'
+//                ]
+//            ])
         ;
     }
     

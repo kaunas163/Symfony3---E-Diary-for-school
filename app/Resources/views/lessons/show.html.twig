@@ -7,12 +7,16 @@
         <tbody>
             <tr>
                 <th>Data ir laikas</th>
-                <td>{% if lesson.datetime %}{{ lesson.datetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if lesson.datetime %}{{ lesson.datetime|date('Y-m-d | H:i') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Komentaras</th>
                 <td>{{ lesson.comment }}</td>
             </tr>
+        <tr>
+            <th>Mokytojas</th>
+            <td>{{ lesson.teacher }}</td>
+        </tr>
         </tbody>
     </table>
 
