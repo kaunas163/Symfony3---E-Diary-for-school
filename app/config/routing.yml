@@ -14,10 +14,6 @@ e_diary_pages:
     resource: "@EDiaryBundle/Controller/PagesController.php"
     type:     annotation
 
-e_diary_roles:
-    resource: "@EDiaryBundle/Controller/RolesController.php"
-    type:     annotation
-
 e_diary_users:
     resource: "@EDiaryBundle/Controller/UsersController.php"
     type:     annotation

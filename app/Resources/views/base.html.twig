@@ -9,7 +9,7 @@
                 body {
                     background-color: #f8f8f8;
                 }
-                .container {
+                .jumbotron {
                     background-color: white;
                 }
                 footer {
@@ -36,25 +36,61 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="/users">Vartotojai</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="/users">Vartotojai</a></li>
+                            <li><a href="/courses">Kursai</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_TEACHER') %}
+                            <li><a href="/lessons">Klasės</a></li>
+                        {% endif %}
                         <li><a href="/pages">Puslapiai</a></li>
-                        <li><a href="/courses">Kursai</a></li>
-                        <li><a href="/lessons">Klasės</a></li>
                         <li><a href="/attendancies">Pamokos</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Registruotis</a></li>
-                        <li><a href="#">Prisijungti</a></li>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li>
+                                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                            </li>
+                            <li>
+                                <a href="{{ path('fos_user_security_logout') }}">
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            </li>
+                        {% else %}
+                            <li><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
+                            <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
-        
-        <div class="container">
-            {% block body %}{% endblock %}
-            <footer>
-                2016 &copy; Ieva Jakšaitytė.
-            </footer>
+
+        <div class ="container">
+            <div class="jumbotron">
+                {% block body %}
+                    {% block fos_user_content %}
+                        {% if error %}
+                            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        <form action="{{ path("fos_user_security_check") }}" method="post">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                            <label for="username">{{ 'security.login.username'|trans }}</label>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+                            <label for="password">{{ 'security.login.password'|trans }}</label>
+                            <input type="password" id="password" name="_password" required="required" />
+
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+                            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                        </form>
+                    {% endblock fos_user_content %}
+                {% endblock %}
+            </div>
+            <footer>Ieva Jakšaitytė &copy; 2016</footer>
         </div>
         
         {% block javascripts %}{% endblock %}
