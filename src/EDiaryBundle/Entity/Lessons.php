@@ -162,4 +162,9 @@ class Lessons
     {
         return $this->teacher;
     }
+
+    public function __toString()
+    {
+        return $this->datetime->format('Y-m-d | H:i') . " " . $this->course;
+    }
 }

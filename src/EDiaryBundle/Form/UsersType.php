@@ -6,7 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class UsersType extends AbstractType
@@ -24,19 +26,32 @@ class UsersType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-            ->add('password', PasswordType::class, [
-                'label' => 'Slaptažodis',
+            ->add('email', EmailType::class, [
+                'label' => 'El. pašto adresas',
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
+//            ->add('password', PasswordType::class, [
+//                'label' => 'Slaptažodis',
+//                'attr' => [
+//                    'class' => 'form-control'
+//                ]
+//            ])
              ->add('child', EntityType::class, [
                  'class' => 'EDiaryBundle:Users',
-                 'choice_label' => 'username'
+                 'label' => 'Vaikas',
+                 'choice_label' => 'username',
+                 'attr' => [
+                     'class' => 'form-control'
+                 ]
              ])
-//            ->add('role', EntityType::class, [
-//                'class' => 'EDiaryBundle:Roles',
-//                'choice_label' => 'title',
+//            ->add('role', ChoiceType::class, [
+//                'choices' => [
+//                    'Administratorius' => 'ROLE_ADMIN',
+//                    'Mokytojas' => 'ROLE_TEACHER',
+//                    'Mokinys, mokinio tėvai' => 'ROLE_USER'
+//                ],
 //                'label' => 'Rolė',
 //                'attr' => [
 //                    'class' => 'form-control'

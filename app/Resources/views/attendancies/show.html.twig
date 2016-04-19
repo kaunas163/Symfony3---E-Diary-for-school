@@ -1,20 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Attendancies</h1>
+    <h1>Pamoka</h1>
 
     <table class="table table-striped table-hover">
         <tbody>
             <tr>
-                <th>Mark</th>
+                <th>Studentas</th>
+                <td>{{ attendancy.student }}</td>
+            </tr>
+            <tr>
+                <th>Pamoka</th>
+                <td>{{ attendancy.lesson }}</td>
+            </tr>
+            <tr>
+                <th>Pažymys</th>
                 <td>{{ attendancy.mark }}</td>
             </tr>
             <tr>
-                <th>Note</th>
+                <th>Pastaba</th>
                 <td>{{ attendancy.note }}</td>
             </tr>
             <tr>
-                <th>Attended</th>
+                <th>Dalyvavo</th>
                 <td>{% if attendancy.attended %}Yes{% else %}No{% endif %}</td>
             </tr>
         </tbody>
@@ -22,15 +30,17 @@
 
     <ul>
         <li>
-            <a href="{{ path('attendancies_index') }}">Back to the list</a>
+            <a href="{{ path('attendancies_index') }}">Grįžti į sąrašą</a>
         </li>
-        <li>
-            <a href="{{ path('attendancies_edit', { 'id': attendancy.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+        {% if is_granted('ROLE_TEACHER') %}
+            <li>
+                <a href="{{ path('attendancies_edit', { 'id': attendancy.id }) }}">Redaguoti</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Šalinti">
+                {{ form_end(delete_form) }}
+            </li>
+        {% endif %}
     </ul>
 {% endblock %}
